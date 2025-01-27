@@ -3,7 +3,7 @@ const path = require('path');
 const http = require('http');
 
 const app = express();
-const PORT = process.env.PORT || 5000; // Default to 5000 if PORT is not set
+const PORT = process.env.PORT || 3000; // Default to 3000 if PORT is not set
 
 // Middleware to log requests
 app.use((req, res, next) => {
