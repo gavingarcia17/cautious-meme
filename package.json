@@ -1,16 +1,13 @@
 {
-  "name": "text-editor",
+  "name": "cautious-meme",
   "version": "1.0.0",
-  "description": "A simple text editor PWA",
+  "description": "Root package for the Text Editor PWA",
   "scripts": {
-    "start": "node Develop/server/server.js",
-    "build": "webpack --mode production --config Develop/client/webpack.config.js",
-    "client": "cd Develop/client && npm start",
-    "server": "cd Develop/server && npm start",
-    "start:dev": "concurrently \"npm run server\" \"npm run client\"",
-    "install": "npm install --prefix Develop/client && npm install --prefix Develop/server"
+    "start": "cd Develop/server && npm start",
+    "build": "cd Develop/client && npm run build",
+    "install": "cd Develop/client && npm install && cd ../server && npm install"
   },
-  "dependencies": {
-    "concurrently": "^6.2.1"
-  }
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
