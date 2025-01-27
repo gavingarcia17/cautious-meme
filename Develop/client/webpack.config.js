@@ -36,7 +36,7 @@ module.exports = {
           destination: path.join('assets', 'icons'),
         },
       ],
-      filename: 'manifest.json', // Specify the custom name for the manifest file
+      filename: 'manifest.json',
     }),
   ],
   module: {
@@ -60,5 +60,9 @@ module.exports = {
         },
       },
     ],
+  },
+  stats: {
+    warnings: true,
+    errors: true,
   },
 };

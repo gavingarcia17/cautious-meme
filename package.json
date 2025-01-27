@@ -2,7 +2,6 @@
   "name": "text-editor",
   "version": "1.0.0",
   "description": "A simple text editor PWA",
-  "main": "Develop/server/server.js",
   "scripts": {
     "start": "node Develop/server/server.js",
     "build": "webpack --mode production --config Develop/client/webpack.config.js",
@@ -12,24 +11,6 @@
     "install": "npm install --prefix Develop/client && npm install --prefix Develop/server"
   },
   "dependencies": {
-    "express": "^4.17.1",
-    "idb": "^5.0.8",
-    "regenerator-runtime": "^0.13.7",
-    "webpack": "^5.37.1",
-    "webpack-cli": "^4.7.0",
-    "webpack-dev-server": "^3.11.2",
-    "workbox-webpack-plugin": "^6.1.5"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.14.0",
-    "@babel/preset-env": "^7.14.1",
-    "babel-loader": "^8.2.2",
-    "clean-webpack-plugin": "^3.0.0",
-    "css-loader": "^5.2.4",
-    "html-webpack-plugin": "^5.3.1",
-    "style-loader": "^2.0.0",
-    "webpack-pwa-manifest": "^4.3.0",
-    "concurrently": "^6.2.1",
-    "nodemon": "^2.0.4"
+    "concurrently": "^6.2.1"
   }
 }
