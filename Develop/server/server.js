@@ -3,7 +3,7 @@ const path = require('path');
 const http = require('http');
 
 const app = express();
-const PORT = process.env.PORT || 10000;
+const PORT = process.env.PORT || 5000; // Default to 5000 if PORT is not set
 
 // Serve static files from the dist directory
 app.use(express.static(path.join(__dirname, '../client/dist')));
