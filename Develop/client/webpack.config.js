@@ -7,62 +7,47 @@ const WebpackPwaManifest = require('webpack-pwa-manifest');
 module.exports = {
   entry: './src/js/index.js',
   output: {
-    filename: 'main.js',
+    filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
   },
-  mode: 'production',
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+        },
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
+    ],
+  },
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: './src/index.html',
-      favicon: './src/favicon.ico'
     }),
-    new WorkboxPlugin.InjectManifest({
-      swSrc: './src/js/src-sw.js',
-      swDest: 'service-worker.js',
-    }),
+    new WorkboxPlugin.GenerateSW(),
     new WebpackPwaManifest({
-      name: 'Text Editor',
-      short_name: 'JATE',
-      description: 'A simple text editor PWA',
+      name: 'My Progressive Web App',
+      short_name: 'MyPWA',
+      description: 'My awesome Progressive Web App!',
       background_color: '#ffffff',
-      theme_color: '#ffffff',
-      start_url: '.',
-      publicPath: '/',
+      crossorigin: 'use-credentials', // can be null, use-credentials or anonymous
       icons: [
         {
-          src: path.resolve('src/images/logo.png'),
-          sizes: [96, 128, 192, 256, 384, 512],
-          destination: path.join('assets', 'icons'),
+          src: path.resolve('src/assets/icon.png'),
+          sizes: [96, 128, 192, 256, 384, 512], // multiple sizes
         },
       ],
-      filename: 'manifest.json',
     }),
   ],
-  module: {
-    rules: [
-      {
-        test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
-      },
-      {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: 'asset/resource',
-      },
-      {
-        test: /\.m?js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env'],
-          },
-        },
-      },
-    ],
-  },
-  stats: {
-    warnings: true,
-    errors: true,
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    compress: true,
+    port: 9000,
   },
 };
